@@ -9,7 +9,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 mongoose.set('useUnifiedTopology',true);
 app.set("view engine","ejs");
 mongoose.connect("mongodb://localhost:27017/arko_part3",{useNewUrlParser: true});
-seedDB();
+//seedDB();
 
 app.get("/", function(req,res){
 	res.render("welcome");
