@@ -1,0 +1,29 @@
+<!DOCUMENT html>
+<html>
+	<head>
+		<title>arko</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css">
+	</head>
+	<body>
+		<nav class="navbar navbar-light bg-light justify-content-between navbar-dark bg-dark">
+			<a class="navbar-brand">Navbar</a>
+			
+			<ul class="nav justify-content-end">
+			  <% if(!currentUser) { %>
+				  <li class="nav-item">
+					<a class="nav-link active" href="/login">Login</a>
+				  </li>
+				  <li class="nav-item">
+					<a class="nav-link" href="/register">Sign Up</a>
+				  </li>
+			  <% } else { %>
+			  <li class="nav-item">
+				<a class="nav-link" href="/">Signed in as <%= currentUser.username %></a>
+			  </li>
+			  <li class="nav-item">
+				<a class="nav-link" href="/logout">Logout</a>
+			  </li> 
+			  <% } %>	
+			</ul>
+		</nav>
+
