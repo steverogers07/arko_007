@@ -43,7 +43,6 @@ app.use("/challenge", challengeRoutes);
 app.use("/cook", cookRoutes);
 app.use("/ltime", ltimeRoutes);
 
-
 function isLoggedIn(req, res, next) {
 	if(req.isAuthenticated()) {
 		return next();
