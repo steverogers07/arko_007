@@ -1,0 +1,57 @@
+<%- include("../../partials/header")%>
+
+<br><br><br><br>
+<div class="container">
+	<div class="jumbotron">
+		<table class="table table-bordered">
+		  <thead>
+			<tr>
+			  <th scope="col">Month</th>
+			  <th scope="col">Year</th>
+			  <th scope="col">Name</th>
+			  <th scope="col">Code</th>
+			<% if(currentUser) { %>
+			  <th scope="col">Status</th>
+			<% } %>
+			</tr>
+		  </thead>
+		  <tbody>
+			<% problems.forEach(function(problem){ %>
+			<tr>
+			  <th scope="row" class="demo"><%= problem.month %></th>
+			  <td class="demo"><%= problem.year %></td>
+			  <td class="demo"><a href="<%=problem.url%>"><%=problem.name%></a></td>
+			  <td class="demo"><a href="<%=problem.url%>"><%=problem.code%></a></td>
+			<% if(currentUser) { %>
+			  <td><button onclick="myFunction()" class="btn btn-success" id="done">Done</button><button onclick="myFunction()" class="btn btn-danger" id="undone">Undone</button></td>
+			  
+			<% } %>
+			</tr>
+			<% }); %>
+		  </tbody>
+		</table>
+	</div>
+</div>
+<script>
+function myFunction() {
+    var i;
+	for(i=0;i<4;++i)
+  		document.getElementsByClassName("demo")[i].style.backgroundColor = "Green";
+    var x = document.getElementById("done");
+	var y = document.getElementById("undone");
+	if(x.style.display=="none") {
+		x.style.display=="block";
+	}
+	else {
+		x.style.display=="none";
+	}
+	if(y.style.display=="none") {
+		y.style.display=="block";
+	}
+	else {
+		y.style.display=="none";
+	}
+}
+</script>
+
+<%- include("../../partials/footer")%>
