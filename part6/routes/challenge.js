@@ -23,7 +23,7 @@ router.get("/div2prob1", function(req,res) {
 	});
 });
 
-router.post("/div2prob1", function(req,res){
+router.post("/div2prob1", middleware.isLoggedIn, function(req,res){
 	user.findById(req.user._id,function(err,foundUser){
 		if(err) {
 			console.log(err);
