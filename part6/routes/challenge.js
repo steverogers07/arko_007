@@ -1,6 +1,10 @@
 var express    = require("express");
 var router     = express.Router();
 var lcdiv2prob1 = require("../models/lcdiv2prob1");
+var user     = require("../models/user");
+var middleware = require("../middleware");
+
+var mongoose       = require('mongoose');
 
 // To the LONG CHALLENGE
 router.get("", function(req,res){
@@ -15,6 +19,21 @@ router.get("/div2prob1", function(req,res) {
 			console.log(err);
 		} else {
 			res.render("problems/lc/div2prob1",{problems: allProblems});
+		}
+	});
+});
+
+router.post("/div2prob1", function(req,res){
+	user.findById(req.user._id,function(err,foundUser){
+		if(err) {
+			console.log(err);
+		} else {
+			id=req.body.id;
+			console.log(id);
+			foundUser.solved.push(id);
+			foundUser.save();
+			console.log(foundUser);
+			res.redirect("div2prob1");
 		}
 	});
 });

@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 mongoose.set('useUnifiedTopology',true);
 mongoose.set('useFindAndModify', false);
 app.set("view engine","ejs");
-mongoose.connect("mongodb://localhost:27017/arko_part5",{useNewUrlParser: true});
+mongoose.connect("mongodb://localhost:27017/arko_part6",{useNewUrlParser: true});
 app.use(methodOverride("_method"));
 app.use(flash());
 //seedDB();
