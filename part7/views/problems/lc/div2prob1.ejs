@@ -16,14 +16,16 @@
 			</tr>
 		  </thead>
 		  <tbody>
+			<% console.log(currentUser) %>
 			<% var a=0 %>
 			<% problems.forEach(function(problem){ %>
 				<tr>
+				<% console.log("ID is "+problem._id); %>
 				<% if(currentUser) { %>
 					<% var solved=currentUser.solved %>
 					<% var flag=solved.indexOf(problem._id) %>
 					<% if(flag!=-1) { %>
-						<%console.log("I am in "+a) %>
+						<% console.log("I am in flag!=-1 " +flag); %>
 				  		<th scope="row" style="background-color:Green;"><%= problem.month %></th>
 				  		<td style="background-color:Green;"><%= problem.year %></td>
 				  		<td style="background-color:Green"><a href="<%=problem.url%>"><%=problem.name%></a></td>
@@ -31,6 +33,7 @@
 				  		<td>
 					  		<form action="/challenge/div2prob1" method="POST">
 						  		<input name="id" value="<%= problem._id %>" style="display:none">
+								<input name="flag" value="0" style="display:none">
 					  			<button class="btn btn-danger" id="undone<%=a%>">Undone</button>
 					  		</form>
 				  		</td>
@@ -42,15 +45,16 @@
 				  		<td>
 					  		<form action="/challenge/div2prob1" method="POST">
 						  		<input name="id" value="<%= problem._id %>" style="display:none">
-					  			<button class="btn btn-success" id="done<%=a%>">Done</button>
+								<input name="flag" value="1" style="display:none">
+					  			<button class="btn btn-success" id="done">Done</button>
 					  		</form>
 				  		</td>
 					<%}%>
 				<% } else { %>
-					<th scope="row" class="demo<%=a%>"><%= problem.month %></th>
-					<td class="demo<%=a%>"><%= problem.year %></td>
-					<td class="demo<%=a%>"><a href="<%=problem.url%>"><%=problem.name%></a></td>
-					<td class="demo<%=a%>"><a href="<%=problem.url%>"><%=problem.code%></a></td>
+					<th scope="row"><%= problem.month %></th>
+					<td><%= problem.year %></td>
+					<td><a href="<%=problem.url%>"><%=problem.name%></a></td>
+					<td><a href="<%=problem.url%>"><%=problem.code%></a></td>
 				<%}%>
 				</tr>
 			  <% a=a+1 %>
@@ -59,13 +63,5 @@
 		</table>
 	</div>
 </div>
-
-<!-- <script>
-function myFunction(a) {
-    var i;
-	for(i=0;i<4;++i)
-  		document.getElementsByClassName("demo"+a)[i].style.backgroundColor = "Green";
-}
-</script> -->
 
 <%- include("../../partials/footer")%>

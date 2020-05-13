@@ -22,6 +22,13 @@ var plcdiv2prob1 = [
 		name: "Pintu and Fruits", 
 		code: "CHPINTU", 
 		url: "https://www.codechef.com/MARCH20B/problems/CHPINTU"
+	},
+	{
+		month: "Feb", 
+		year: "2020", 
+		name: "School of Geometry", 
+		code: "SNUG_FIT", 
+		url: "https://www.codechef.com/FEB20B/problems/SNUG_FIT"
 	}
 ];
 

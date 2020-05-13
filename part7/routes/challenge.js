@@ -28,14 +28,26 @@ router.post("/div2prob1", middleware.isLoggedIn, function(req,res){
 		if(err) {
 			console.log(err);
 		} else {
-			id=req.body.id;
-			console.log(id);
-			foundUser.solved.push(id);
-			foundUser.save();
-			console.log(foundUser);
-			res.redirect("div2prob1");
+			if(req.body.flag==1) {
+				id=req.body.id;
+				//console.log(id);
+				foundUser.solved.push(id);
+				foundUser.save();
+				console.log("This is from "+foundUser);
+			} else {
+				//console.log("Hello");
+				solved=foundUser.solved;
+				id=req.body.id;
+				index=solved.indexOf(id);
+				console.log(index);
+				foundUser.solved.splice(index,1);
+				foundUser.save();
+				console.log("This is from you know "+foundUser);
+			}
+			res.redirect("div2prob1");	
 		}
 	});
 });
+
 
 module.exports = router;
