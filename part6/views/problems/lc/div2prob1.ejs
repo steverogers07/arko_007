@@ -1,5 +1,4 @@
 <%- include("../../partials/header")%>
-
 <br><br><br><br>
 <div class="container">
 	<div class="jumbotron">
@@ -28,7 +27,6 @@
 				  <td class="demo<%=a%>"><a href="<%=problem.url%>"><%=problem.code%></a></td>
 				<% if(currentUser) { %>
 				  <% var solved=currentUser.solved %>
-					<% console.log(solved) %>
 				  <td class="demo<%=a%>"><%= currentUser.solved %></td>
 				  <td>
 					  <form action="/challenge/div2prob1" method="POST">

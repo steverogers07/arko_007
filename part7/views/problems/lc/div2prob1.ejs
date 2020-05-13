@@ -2,16 +2,14 @@
 
 <br><br><br><br>
 <div class="container">
-	<div class="jumbotron">
+	<div>
 		<table class="table table-bordered">
 		  <thead>
 			<tr>
 			  <th scope="col">Month</th>
 			  <th scope="col">Year</th>
-			  <th scope="col">User</th>
 			  <th scope="col">Name</th>
 			  <th scope="col">Code</th>
-				 <th scope="col">id</th>
 			<% if(currentUser) { %>
 			  <th scope="col">Status</th>
 			<% } %>
@@ -21,26 +19,39 @@
 			<% var a=0 %>
 			<% problems.forEach(function(problem){ %>
 				<tr>
-				  
-				  <th scope="row" class="demo<%=a%>"><%= problem.month %></th>
-				  <td class="demo<%=a%>"><%= problem.year %></td>
-				  <td class="demo<%=a%>"><a href="<%=problem.url%>"><%=problem.name%></a></td>
-				  <td class="demo<%=a%>"><a href="<%=problem.url%>"><%=problem.code%></a></td>
-				<%if(currentUser) { %>
+				<% if(currentUser) { %>
 					<% var solved=currentUser.solved %>
 					<% var flag=solved.indexOf(problem._id) %>
 					<% if(flag!=-1) { %>
-					<%	 %>
+						<%console.log("I am in "+a) %>
+				  		<th scope="row" style="background-color:Green;"><%= problem.month %></th>
+				  		<td style="background-color:Green;"><%= problem.year %></td>
+				  		<td style="background-color:Green"><a href="<%=problem.url%>"><%=problem.name%></a></td>
+				  		<td style="background-color:Green"><a href="<%=problem.url%>"><%=problem.code%></a></td>
+				  		<td>
+					  		<form action="/challenge/div2prob1" method="POST">
+						  		<input name="id" value="<%= problem._id %>" style="display:none">
+					  			<button class="btn btn-danger" id="undone<%=a%>">Undone</button>
+					  		</form>
+				  		</td>
+					<%} else { %>
+						<th scope="row" style="background-color:White"><%= problem.month %></th>
+				  		<td style="background-color:White"><%= problem.year %></td>
+				  		<td style="background-color:White"><a href="<%=problem.url%>"><%=problem.name%></a></td>
+				  		<td style="background-color:White"><a href="<%=problem.url%>"><%=problem.code%></a></td>
+				  		<td>
+					  		<form action="/challenge/div2prob1" method="POST">
+						  		<input name="id" value="<%= problem._id %>" style="display:none">
+					  			<button class="btn btn-success" id="done<%=a%>">Done</button>
+					  		</form>
+				  		</td>
 					<%}%>
-				  <!-- <td class="demo<%=a%>"><%= currentUser.solved %></td> -->
-				  <td>
-					  <form action="/challenge/div2prob1" method="POST">
-						  <input name="id" value="<%= problem._id %>" style="display:none">
-					  	<button class="btn btn-success" id="done<%=a%>">Done</button>
-					  </form>
-					  <!-- <button onclick="myFunction(<%=a%>)" class="btn btn-danger" id="undone<%=a%>" style="display:none;">Undone</button> -->
-				  </td>
-				<% } %>
+				<% } else { %>
+					<th scope="row" class="demo<%=a%>"><%= problem.month %></th>
+					<td class="demo<%=a%>"><%= problem.year %></td>
+					<td class="demo<%=a%>"><a href="<%=problem.url%>"><%=problem.name%></a></td>
+					<td class="demo<%=a%>"><a href="<%=problem.url%>"><%=problem.code%></a></td>
+				<%}%>
 				</tr>
 			  <% a=a+1 %>
 			<% }); %>
@@ -49,11 +60,12 @@
 	</div>
 </div>
 
-<%- include("../../partials/footer")%>
+<!-- <script>
+function myFunction(a) {
+    var i;
+	for(i=0;i<4;++i)
+  		document.getElementsByClassName("demo"+a)[i].style.backgroundColor = "Green";
+}
+</script> -->
 
-<% function myFunction(a) { %>
-<%    var i;%>
-<%	// console.log("demo"+a);
-<%	for(i=0;i<4;++i)%>
-<%		document.getElementsByClassName("demo"+a)[i].style.backgroundColor = "Green"; %>
-<% } %>
+<%- include("../../partials/footer")%>
