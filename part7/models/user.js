@@ -7,8 +7,7 @@ var UserSchema = new mongoose.Schema({
 	password: String,
 	solved: [
 		{	 
-			type: mongoose.Schema.Types.ObjectId,
-			ref: "User"
+			type: String,
 		}
 	]
 });
