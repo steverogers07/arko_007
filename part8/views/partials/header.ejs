@@ -6,23 +6,24 @@
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 		<link rel="stylesheet" href="/stylesheets/main.css">
 	</head>
-	<body style="background-color:Black">
+	<body style="background-color:#080808">
 		<header class="site-header">
 
-      <!-- ======================================Navigation Bar================================================= -->
+      <!-- ======================================Navigation Bar================================================= -->    
       <nav class="navbar navbar-expand-md  navbar-dark bg-dark ">
         <div class="container">
-          <a class="navbar-brand mr-4" href="/">arko</a>
+          <a class="navbar-brand mr-4" href="/">Arko</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarToggle">
             <div class="navbar-nav mr-auto">
+				<a class="nav-item nav-link" href="/">Home</a>
 			<% if(currentUser) { %>
               <a class="nav-item nav-link" href="/profile">Profile</a>
 			<% } %>
               <a class="nav-item nav-link" href="/about">About</a>
-
+			  <a class="nav-item nav-link" href="/">Feedback</a>
             </div>
             <!-- Navbar Right Side -->
             <div class="navbar-nav">
@@ -30,7 +31,7 @@
               <a class="nav-item nav-link" href="/login">Login</a>
               <a class="nav-item nav-link" href="/register">Sign Up</a>
 			<% } else { %>
-			  <a class="nav-item nav-link" href="/profile">Signed is as <%=currentUser.username %></a>
+			  <a class="nav-item nav-link" href="/profile">Signed in as <%=currentUser.username %></a>
               <a class="nav-item nav-link" href="/logout">Logout</a>
 			<% } %>
             </div>

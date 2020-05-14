@@ -24,13 +24,17 @@ router.get("/register", function(req,res) {
 
 //handle sign up logic
 router.post("/register",function(req,res){
-	var newUser = new User({username: req.body.username});
+	var newUser = new User({username: req.body.username, firstname: req.body.firstname, lastname: req.body.lastname, email: req.body.email});
+	//console.log("HELLO");
+	//console.log(req.body.firstname);
 	User.register(newUser , req.body.password, function(err,user){
 		if(err) {
 			console.log(err);
+			//console.log("HI");
 			return res.render("register");
 		}
 		passport.authenticate("local")(req, res, function(){
+			console.log(newUser);
 			res.redirect("/");
 		});
 	});
