@@ -2,10 +2,19 @@ var express  = require("express");
 var router   = express.Router();
 var passport = require("passport");
 var User     = require("../models/user");
+var middleware = require("../middleware");
 
 // Welcome Page
 router.get("/", function(req,res){
 	res.render("welcome");
+});
+
+router.get("/profile", middleware.isLoggedIn, function(req,res) {
+	res.render("profile");
+});
+
+router.get("/about", function(req,res) {
+	res.render("about");
 });
 
 //show register form
@@ -46,12 +55,5 @@ router.get("/logout", function(req,res) {
 	res.redirect("/");
 });
 
-//middleware
-function isLoggedIn(req, res, next) {
-	if(req.isAuthenticated()) {
-		return next();
-	}
-	res.redirect("/login");
-}
 
 module.exports = router;

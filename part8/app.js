@@ -21,9 +21,10 @@ mongoose.set('useUnifiedTopology',true);
 mongoose.set('useFindAndModify', false);
 app.set("view engine","ejs");
 mongoose.connect("mongodb://localhost:27017/arko_part8",{useNewUrlParser: true});
+app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
 app.use(flash());
-seedDB();
+//seedDB();
 
 // PASSPORT CONFIGURATION
 app.use(require("express-session")({

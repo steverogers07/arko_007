@@ -30,19 +30,19 @@ router.post("/div2prob1", middleware.isLoggedIn, function(req,res){
 		} else {
 			if(req.body.flag==1) {
 				code=req.body.code;
-				console.log(code);
+				//console.log(code);
 				foundUser.solved.push(code);
 				foundUser.save();
-				console.log("This is from "+foundUser);
+				//console.log("This is from "+foundUser);
 			} else {
 				//console.log("Hello");
 				solved=foundUser.solved;
 				code=req.body.code;
 				index=solved.indexOf(code);
-				console.log(index);
+				//console.log(index);
 				foundUser.solved.splice(index,1);
 				foundUser.save();
-				console.log("This is from you know "+foundUser);
+				//console.log("This is from you know "+foundUser);
 			}
 			res.redirect("div2prob1");	
 		}

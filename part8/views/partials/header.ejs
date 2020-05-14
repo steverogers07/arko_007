@@ -3,32 +3,38 @@
 	<head>
 		<title>arko</title>
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+		<link rel="stylesheet" href="/stylesheets/main.css">
 	</head>
-	<body>
-		<nav class="navbar navbar-light bg-light justify-content-between navbar-dark bg-dark">
-			<a href="/" class="navbar-brand">aRko</a>
-			<nav class="nav">
-			<% if(currentUser) { %>
-			  <a class="nav-link" href="/">Profile</a>
-			<% } %>
-			  <a class="nav-link" href="#">About</a>
-			</nav>
-			<ul class="nav justify-content-end">
-			  <% if(!currentUser) { %>
-				  <li class="nav-item">
-					<a class="nav-link active" href="/login">Login</a>
-				  </li>
-				  <li class="nav-item">
-					<a class="nav-link" href="/register">Sign Up</a>
-				  </li>
-			  <% } else { %>
-			  <li class="nav-item">
-				<a class="nav-link" href="/">Signed in as <%= currentUser.username %></a>
-			  </li>
-			  <li class="nav-item">
-				<a class="nav-link" href="/logout">Logout</a>
-			  </li> 
-			  <% } %>	
-			</ul>
-		</nav>
+	<body style="background-color:Black">
+		<header class="site-header">
 
+      <!-- ======================================Navigation Bar================================================= -->
+      <nav class="navbar navbar-expand-md  navbar-dark bg-dark ">
+        <div class="container">
+          <a class="navbar-brand mr-4" href="/">arko</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarToggle">
+            <div class="navbar-nav mr-auto">
+			<% if(currentUser) { %>
+              <a class="nav-item nav-link" href="/profile">Profile</a>
+			<% } %>
+              <a class="nav-item nav-link" href="/about">About</a>
+
+            </div>
+            <!-- Navbar Right Side -->
+            <div class="navbar-nav">
+			<% if(!currentUser) { %>
+              <a class="nav-item nav-link" href="/login">Login</a>
+              <a class="nav-item nav-link" href="/register">Sign Up</a>
+			<% } else { %>
+			  <a class="nav-item nav-link" href="/profile">Signed is as <%=currentUser.username %></a>
+              <a class="nav-item nav-link" href="/logout">Logout</a>
+			<% } %>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
