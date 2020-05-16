@@ -17,6 +17,18 @@ router.get("/profile/edit", middleware.isLoggedIn, function(req,res) {
 	res.render("edit");
 });
 
+router.post("/profile/edit", middleware.isLoggedIn, function(req,res) {
+	// console.log("HELLO");
+	req.user.firstname=req.body.firstname;
+	req.user.lastname=req.body.lastname;
+	req.user.college=req.body.college;
+	req.user.profession=req.body.profession;
+	req.user.dp=req.body.filename;
+	req.user.save();
+	console.log(req.user);
+	res.redirect("/profile");
+});
+
 router.get("/about", function(req,res) {
 	res.render("about");
 });
@@ -34,11 +46,13 @@ router.post("/register",function(req,res){
 	User.register(newUser , req.body.password, function(err,user){
 		if(err) {
 			console.log(err);
+			req.flash("error", err.message);
 			//console.log("HI");
 			return res.render("register");
 		}
 		passport.authenticate("local")(req, res, function(){
 			console.log(newUser);
+			req.flash("success", "Welcome to Arko " + user.firstname);
 			res.redirect("/");
 		});
 	});
@@ -60,6 +74,7 @@ router.post("/login", passport.authenticate("local",
 // logout route
 router.get("/logout", function(req,res) {
 	req.logout();
+	req.flash("success", "Logged you out!");
 	res.redirect("/");
 });
 

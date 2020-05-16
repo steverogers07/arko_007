@@ -5,7 +5,7 @@
 </h1> -->
 <br>
 <div class="container text-white">
-	<form class="well form-horizontal" action=" " method="post"  id="contact_form">
+	<form class="well form-horizontal" action="/profile/edit" method="POST"  id="contact_form">
 		<fieldset>
 
 						<!-- Form Name -->
@@ -18,7 +18,7 @@
   			<div class="col-md-4 inputGroupContainer">
   				<div class="input-group">
   					<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-  					<input  name="first_name" placeholder="" class="form-control"  type="text" value="<%=currentUser.firstname%>">
+  					<input  name="firstname" placeholder="" class="form-control"  type="text" value="<%=currentUser.firstname%>">
     			</div>
   			</div>
 		</div>
@@ -30,7 +30,7 @@
 			<div class="col-md-4 inputGroupContainer">
 				<div class="input-group">
 					<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-					<input name="last_name" placeholder="Last Name" class="form-control"  type="text" value="<%=currentUser.lastname%>">
+					<input name="lastname" placeholder="Last Name" class="form-control"  type="text" value="<%=currentUser.lastname%>">
 				</div>
 			</div>
 		</div>
@@ -87,7 +87,7 @@
    			<div class="col-md-4 inputGroupContainer">
    				 <div class="input-group">
   					<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-					<input name="college" value="<%currentUser.college%>" class="form-control"  type="text">
+					<input name="college" value="<%=currentUser.college%>" class="form-control"  type="text">
     			</div>
   			</div>
 		</div>
@@ -102,11 +102,21 @@
     			</div>
 			</div>
 		</div>
+			
+		<div class="form-group">
+			<label class="col-md-4 control-label">Upload Profile Picture</label>  
+    		<div class="col-md-4 inputGroupContainer">
+    			<div class="input-group">
+        			<span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+  					<input type="file" id="myFile" name="filename" value="<%=currentUser.dp%>" >
+    			</div>
+			</div>
+		</div>
 
 
 						<!-- Text input-->
 
-		<div class="form-group">
+		<!-- <div class="form-group">
 			<label class="col-md-4 control-label">Contact No.</label>  
 			<div class="col-md-4 inputGroupContainer">
 				<div class="input-group">
@@ -114,7 +124,7 @@
 		  			<input name="contact_no" placeholder="(639)" class="form-control" type="text">
 				</div>
 			</div>
-		</div>
+		</div> -->
 
 <!-- Select Basic -->
 
