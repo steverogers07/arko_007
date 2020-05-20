@@ -3,12 +3,22 @@ var express        = require("express"),
 	bodyParser     = require("body-parser"),
     mongoose       = require('mongoose'),
 	flash		   = require("connect-flash"),
-    lcdiv2prob1    = require('./models/lcdiv2prob1'),
+    // lcdiv2prob1    = require('./models/lcdiv2prob1'),
 	passport       = require("passport"),
 	Localstrategy  = require("passport-local"),
 	methodOverride = require("method-override"),
-	User           = require("./models/user"),
-    seedDB         = require('./seed');
+	User           = require("./models/user");
+
+              //  seeding variables
+// LONG CHALLENGE
+var seedlcdiv2prob1    = require('./seed/lcdiv2prob1'),
+	seedlcdiv2prob2    = require('./seed/lcdiv2prob2'),
+	seedlcdiv2prob3    = require('./seed/lcdiv2prob3'),
+	seedlcdiv2prob4    = require('./seed/lcdiv2prob4'),
+	seedlcdiv2prob5    = require('./seed/lcdiv2prob5'),
+	seedlcdiv2prob6    = require('./seed/lcdiv2prob6'),
+	seedlcdiv2prob7    = require('./seed/lcdiv2prob7'),
+	seedlcdiv2prob8    = require('./seed/lcdiv2prob8');
 
 // requiring routes
 var indexRoutes		 = require("./routes/index"),
@@ -24,7 +34,16 @@ mongoose.connect("mongodb://localhost:27017/arko_part9",{useNewUrlParser: true})
 app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
 app.use(flash());
-//seedDB();
+
+// SEED THE DATABASE
+// seedlcdiv2prob1();
+// seedlcdiv2prob2();
+// seedlcdiv2prob3();
+// seedlcdiv2prob4();
+// seedlcdiv2prob5();
+// seedlcdiv2prob6();
+// seedlcdiv2prob7();
+// seedlcdiv2prob8();
 
 // PASSPORT CONFIGURATION
 app.use(require("express-session")({

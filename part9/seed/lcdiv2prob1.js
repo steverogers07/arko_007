@@ -1,5 +1,5 @@
 var mongoose = require("mongoose");
-var lcdiv2prob1 = require("./models/lcdiv2prob1");
+var lcdiv2prob1 = require("../models/lcdiv2prob1");
 
 var plcdiv2prob1 = [
 	{
@@ -43,17 +43,10 @@ var plcdiv2prob1 = [
 		name: "That is My Score", 
 		code: "WATSCORE", 
 		url: "https://www.codechef.com/DEC19B/problems/WATSCORE"
-	},
-	{
-		month: "Nov", 
-		year: "2019", 
-		name: "Weapon Value", 
-		code: "SC31", 
-		url: "https://www.codechef.com/NOV19B/problems/SC31"
 	}
 ];
 
-function seedDB(){
+function seedlcdiv2prob1(){
    lcdiv2prob1.deleteMany({}, function(err){
         if(err){
             console.log(err);
@@ -73,5 +66,5 @@ function seedDB(){
     }); 
 }
 
-module.exports = seedDB;
+module.exports = seedlcdiv2prob1;
 
