@@ -1,0 +1,65 @@
+<!DOCUMENT html>
+<html>
+	<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Arko</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"  integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>         
+         <link rel="stylesheet" href="/stylesheets/main.css">
+         <link href='https://fonts.googleapis.com/css?family=Cookie' rel='stylesheet'>
+		
+		
+		<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css"> -->
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+		
+	</head>
+	<body >
+		<header class="site-header" style="z-index:1;position:relative;width:100%;" >
+
+      <!-- ======================================Navigation Bar================================================= -->    
+      <nav class="navbar navbar-expand-md  navbar-dark bg-dark ">
+        <div class="container">
+          <a class="navbar-brand mr-4" href="/">Arko</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarToggle" style="z-index:99999">
+            <div class="navbar-nav mr-auto">
+				<!-- <a class="nav-item nav-link" href="/">Home</a> -->
+			<% if(currentUser) { %>
+              <a class="nav-item nav-link" href="/profile">Profile</a>
+			<% } %>
+              <a class="nav-item nav-link" href="/about">About</a>
+			  <a class="nav-item nav-link" href="https://docs.google.com/forms/d/e/1FAIpQLSfieemAjS2vySqXnBiH6crRa42Rf7hdVMlBda3SGX25xAh4LA/viewform?usp=sf_link" target="_blank">Feedback</a>
+            </div>
+            <!-- Navbar Right Side -->
+            <div class="navbar-nav">
+			<% if(!currentUser) { %>
+              <a class="nav-item nav-link" href="/login">Login</a>
+              <a class="nav-item nav-link" href="/register">Sign Up</a>
+			<% } else { %>
+			  <!-- <a class="nav-item nav-link" href="/profile">Signed in as <%=currentUser.username %></a> -->
+              <a class="nav-item nav-link" href="/logout">Logout</a>
+			<% } %>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+	<br>
+	<div class="container">
+		<% if(error && error.length > 0) { %>
+		<div class="alert alert-danger" role="alert">
+			<%= error %>
+		</div>
+		<% } %>
+		<% if(success && success.length > 0) { %>
+		<div class="alert alert-success" role="alert">
+			<%= success %>
+		</div>
+		<% } %>
+	</div>	

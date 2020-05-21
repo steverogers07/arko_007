@@ -1,0 +1,62 @@
+<%- include("../../partials/header")%>
+
+<br><br><br>
+<div class="container">
+	<div class="table-responsive">
+		<table class="table table-bordered table-striped">
+		  <thead>
+			<tr style="background-color:#FFC312">
+			  <th scope="col">Month</th>
+			  <th scope="col">Year</th>
+			  <th scope="col">Name</th>
+			  <th scope="col">Code</th>
+			<% if(currentUser) { %>
+			  <th scope="col">Status</th>
+			<% } %>
+			</tr>
+		  </thead>
+		  <tbody>
+			<% problems.forEach(function(problem){ %>
+				<tr>
+				<% if(currentUser) { %>
+					<% var solved=currentUser.solved %>
+					<% var flag=solved.indexOf(problem.code) %>
+					<% if(flag!=-1) { %>
+				  		<th scope="row" class="bg-success text-white"><%= problem.month %></th>
+				  		<td class="bg-success text-white"><%= problem.year %></td>
+				  		<td class="bg-success text-white"><a style="color:white" href="<%=problem.url%>"><%=problem.name%></a></td>
+				  		<td class="bg-success text-white"><a style="color:white" href="<%=problem.url%>"><%=problem.code%></a></td>
+				  		<td class="bg-success text-white">
+					  		<form action="/challenge/div2prob2" method="POST">
+						  		<input name="code" value="<%= problem.code %>" style="display:none">
+								<input name="flag" value="0" style="display:none">
+					  			<button class="btn btn-danger">Undone</button>
+					  		</form>
+				  		</td>
+					<%} else { %>
+						<th scope="row" class="bg-secondary text-white"><%= problem.month %></th>
+				  		<td class="bg-secondary text-white"><%= problem.year %></td>
+				  		<td class="bg-secondary text-white"><a style="color:white" href="<%=problem.url%>"><%=problem.name%></a></td>
+				  		<td class="bg-secondary text-white"><a style="color:white" href="<%=problem.url%>"><%=problem.code%></a></td>
+				  		<td class="bg-secondary text-white">
+					  		<form action="/challenge/div2prob2" method="POST">
+						  		<input name="code" value="<%= problem.code %>" style="display:none">
+								<input name="flag" value="1" style="display:none">
+					  			<button class="btn btn-success" >Done</button>
+					  		</form>
+				  		</td>
+					<%}%>
+				<% } else { %>
+					<th scope="row" class="bg-secondary text-white"><%= problem.month %></th>
+					<td class="bg-secondary text-white"><%= problem.year %></td>
+					<td class="bg-secondary text-white"><a style="color:white" href="<%=problem.url%>"><%=problem.name%></a></td>
+					<td class="bg-secondary text-white"><a style="color:white" href="<%=problem.url%>"><%=problem.code%></a></td>
+				<%}%>
+				</tr>
+			<% }); %>
+		  </tbody>
+		</table>
+	</div>
+</div>
+
+<%- include("../../partials/footer")%>
